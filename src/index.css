@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Mars Research Hub Design System */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 93%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 93%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 93%;
+
+    --primary: 22 67% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 93%;
+
+    --muted: 0 0% 66%;
+    --muted-foreground: 0 0% 66%;
+
+    --accent: 22 67% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 4 75% 59%;
+    --destructive-foreground: 0 0% 93%;
+
+    --success: 131 56% 40%;
+    --warning: 44 100% 49%;
+    --error: 4 75% 59%;
+
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 22 67% 50%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar theming for Mars theme */
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 93%;
+    --sidebar-primary: 22 67% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 22 67% 50%;
+    --sidebar-border: 0 0% 10%;
+    --sidebar-ring: 22 67% 50%;
+
+    /* Custom Mars theme gradients and effects */
+    --mars-gradient: linear-gradient(135deg, hsl(22 67% 50% / 0.1), hsl(22 67% 30% / 0.05));
+    --hero-overlay: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+    --glow-accent: 0 0 20px hsl(22 67% 50% / 0.3);
+    --card-glow: 0 0 40px hsl(22 67% 50% / 0.1);
+  }
+}
+
+/* Remove dark mode section as we use fixed theme */
+
+/* Mars Research Hub Custom Styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', 'Arial Black', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Custom component variants */
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+    transform: translateY(0);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--glow-accent);
+  }
+
+  .btn-secondary {
+    @apply border border-accent text-accent bg-transparent hover:bg-accent/10 focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+    transform: translateY(0);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+  }
+
+  .glass-card {
+    @apply bg-card border border-border rounded-xl p-6;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    box-shadow: var(--card-glow);
+    border-color: hsl(var(--accent) / 0.3);
+  }
+
+  .sidebar-nav-item {
+    @apply text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 transition-all duration-200;
+  }
+  
+  .sidebar-nav-item.active {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground border-l-2 border-accent;
+  }
+}
