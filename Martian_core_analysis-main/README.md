@@ -1,4 +1,4 @@
-# Martian Core Analysis
+# Seismocore
 
 This repository contains all notebooks that perform various data analyses and computational tasks for the analysis of the Martian Core and Seismic data. Each notebook is focused on a specific topic or methodology. Below is a summary of the actions performed and the analysis conducted in each notebook. 
 Detailed Report Available at : [Report](https://drive.google.com/file/d/1y5hR4NdCTHl9jtou2iM-OberLOwhQ8hh/view?usp=sharing).
