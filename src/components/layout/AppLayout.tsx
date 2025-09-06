@@ -1,40 +1,36 @@
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./AppSidebar";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppLayout } from "@/components/layout/AppLayout";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Contributions from "./pages/Contributions";
+import NotFound from "./pages/NotFound";
 
-interface AppLayoutProps {
-  children: React.ReactNode;
-}
+const queryClient = new QueryClient();
 
-export function AppLayout({ children }: AppLayoutProps) {
-  return (
-    <div className="min-h-screen w-full flex bg-background">
-      <AppSidebar />
-      
-      <div className="flex-1 flex flex-col">
-        {/* Global header with sidebar trigger */}
-        <header className="h-12 flex items-center border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 lg:hidden">
-          <SidebarTrigger className="ml-4" />
-          <div className="ml-4">
-            <h1 className="font-display text-lg font-bold text-accent">Mars Research Hub</h1>
-          </div>
-        </header>
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <SidebarProvider>
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/contributions" element={<Contributions />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppLayout>
+        </SidebarProvider>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
-        {/* Main content area */}
-        <main className="flex-1">
-          {children}
-        </main>
-
-        {/* Footer */}
-        <footer className="border-t border-border bg-card/50 backdrop-blur">
-          <div className="container mx-auto px-4 py-3">
-            <div className="flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">
-                Built with <span className="text-accent font-medium">Bolt AI</span>
-              </span>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </div>
-  );
-}
+export default App;
