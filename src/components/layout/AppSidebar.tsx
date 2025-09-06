@@ -44,9 +44,9 @@ export function AppSidebar() {
           {!collapsed && (
             <div>
               <h1 className="font-display text-lg font-bold text-sidebar-foreground">
-                Mars Research Hub
+                Seismocore
               </h1>
-              <p className="text-xs text-sidebar-foreground/60">Front-end by Bolt AI</p>
+              <p className="text-xs text-sidebar-foreground/60">Seismocore Team</p>
             </div>
           )}
         </div>
