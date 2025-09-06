@@ -1,4 +1,4 @@
-# Mars Research Hub
+# Seismocore
 
 A stunning Mars-themed research platform built with React, featuring a black background with rusty-orange accents.
 
